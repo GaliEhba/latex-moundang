@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{fontspec}     % pour polices Unicode
+\usepackage{CharisSIL}
+\usepackage{moundang}
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\setstretch{1.25}
+\title{\textbf{Documentation du package \texttt{moundang.sty}}}
+\author{Par Gali Ehba Vincent (galiehba@gmail.com)}
+\date{Juillet 2025}
+
+\begin{document}
+	
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+	\section{Préambule}
+	Le package \texttt{moundang.sty} est conçu pour faciliter la rédaction de documents éducatifs, scientifiques et linguistiques en langue moundang. Il s'appuie sur des caractères Unicode et une police adaptée, et nécessite la compilation avec XeLaTeX ou LuaLaTeX.
+	
+	\subsection*{Compatibilité moteur}
+	\begin{itemize}
+		\item \texttt{pdfLaTeX} : Non supporté (ne gère pas l'Unicode correctement)
+		\item \texttt{XeLaTeX} ou \texttt{LuaLaTeX} : Recommandé
+	\end{itemize}
+	
+	\subsection*{Chargement du package}
+	\begin{verbatim}
+		\usepackage{fontspec}  % pour polices Unicode
+		\usepackage{CharisSIL}  % Police adapté
+		\usepackage{moundang}  %charger le package
+	\end{verbatim}
+	
+	\section{Écriture en moundang}
+	\subsection{Caractères spéciaux disponibles}
+	Voici les commandes fournies par le package :
+	
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Code Latex & Caractère & Code Latex & Caractère\\
+		\hline
+		\verb*|\mdB| & \mdB & \verb*|\mdb| & \mdb\\
+		\hline
+		\verb*|\mdD| & \mdD & \verb*|\mdd| & \mdd\\
+		\hline
+		\verb*|\mdN| & \mdN & \verb*|\mdn| & \mdn\\
+		\hline
+		\verb*|\mdE| & \mdE & \verb*|\mde| & \mde\\
+		\hline
+		\verb*|\mdetilde| & \mdetilde & \verb*|\mdatilde| & \mdatilde\\
+		\hline
+		\verb*|\mdeetilde| & \mdeetilde & &\\
+		\hline
+	\end{tabular}
+	
+\subsection{Commande de stylisation}
+Les stylisations (gras, italique) utilisent directement la fonction built-in de Latex.
+\begin{verbatim}
+	\textbf{...}
+	\textit{...}
+\end{verbatim}
+Exemple :\verb|"\textbf{Me t\mde\ fee Mathematik ne zah M\mde\mdd a\mdn.}"| donne
+\textbf{"Me t\mde\ fee Mathematik ne zah M\mde da\mdn."}.
+
+\section{Techniques de saisie LaTeX}
+Pour insérer des lettres moundang dans un mot sans confusion syntaxique :
+\begin{enumerate} 
+	\item Encadrer les commandes avec des accolades : \verb|latex: p{\mde}lli| $\to$ pəlli 
+	\item Ajouter \verb|textbackslash (\)| pour forcer un espace : \verb|Mas\mde\mdn\ faa| $\to$ Masəŋ faa
+	 \item  Taper les lettres Unicode directement si le clavier le permet \verb|Masəŋ| $\to$ Mas\mde\mdn 
+	 \end{enumerate}
+\subsection*{Attention}
+\begin{itemize}
+	\item Latex ignore l'espace après une commande: si vous écrivez \verb|p\mde lli|, la sortie sera bien \textbf{p\mde lli}.
+	\item En retour, vous ne pouvez pas écrire \verb|p\mdelli|, latex considérera carrément \verb|\mdelli| comme une commande, ce qui vous donnera une erreur, sauf si vous utilisez la technique 1. (encadrer les commandes avec des accolades).
+\end{itemize}
+
+\section{Exemples et mathématique localisée}
+
+	\subsection{Phrases en Moundang}
+	\begin{enumerate}
+		\item \verb|\textit{T\mde t\mde\mdn\ fan tan da\mdn\ ako ye \mdd ul D\mde blii}|  donne : \textit{T\mde t\mde\mdn\ fan tan da\mdn\ ako ye \mdd ul D\mde blii} : \textit{La crainte du Seigneur est le début de toute sagesse}.
+		\item \verb|Fan tan cok f\mdatilde i yo| donne: Fan tan cok f\mdatilde i yo.
+		\item \begin{verbatim}
+			\textbf{Mas\mde\mdn\  faa ame ga jo\mdn\  Mathematik ne zaah M\mde nda\mdn\ ta.
+				 Nai\mdb e, a ga t\mde rra fan p\mde lli.}
+		\end{verbatim}
+		 donne :  \textbf{Mas\mde\mdn\  faa ame ga jo\mdn\  Mathematik ne zaah M\mde nda\mdn\ ta. Nai\mdb e, a ga t\mde rra fan p\mde lli.}
+	\end{enumerate}
+	
+ \subsection{Mathématique (Taimataili)}
+ \textbf{Note} : Ces données sont tirées de la page facebook Dari Infos, relative au Festival de la culture et des arts Moundang (FINZAM 2025) mais contient aussi mes propres ajouts.\\
+ La section requiert les packages \textbf{amsmath} et \textbf{amssymb} (inclure \verb|"\usepackage{amsmath, amssymb}"| dans l'entête).
+ 
+	$\mathbb{N}$ : jol byanfakeeni
+	
+	$2 + 3 = 5$ : gwaa \mdb oo sai lwaa dapee.
+	
+	$10 - 6 = 4$ : jamma n\mde\mde\ yea lwaa nai.
+	
+	Soit $n \in \mathbb{Z}$ alors $n\times n \in \mathbb{Z}^+$ : \mdB a\mdn\ $n$ p\mde\ \textbf{jol fakeekunni}, nai\mdb e $n$ zahl\mde\mdn\ $n$ p\mde zyil \textbf{jol fakeekun t\mde gbaa}.
+	
+	$\lim\limits_{x \to + \infty}( \frac{x-1}{x+1})=1$ : Zahsyee $\frac{x-1}{x+1}$ ne cok $x$ mo t\mde\ ga n\mde\mde lii lwa va\mdn no.
+	\section{Aller plus loin}
+	On peut redéfinir les commandes existantes avec \verb|\renewcommand{cmd}{def}|
+	
+	Contactez nous pour toute suggestion.
+\end{document}

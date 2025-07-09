@@ -1,0 +1,32 @@
+\ProvidesPackage{moundang}[2025/07/09 v1.0]
+\RequirePackage{etoolbox}      % ← À ajouter
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+
+\ifboolexpr{ not (bool{xetex} or bool{luatex}) }{
+	\PackageError{moundang}{%
+		Ce package nécessite XeLaTeX ou LuaLaTeX.\MessageBreak
+		pdfLaTeX ne peut pas afficher les caractères moundang correctement.%
+	}{%
+		Changez votre compilateur dans votre éditeur LaTeX.\MessageBreak
+		Pour TeXstudio, allez dans Options → Commandes → XeLaTeX.%
+	}
+}
+\setmainfont{Charis SIL}
+
+% Commandes pour caractères spécifiques
+\newcommand{\mdB}{Ɓ}     % B implosive
+\newcommand{\mdb}{ɓ}
+\newcommand{\mdN}{Ŋ}    % Ŋ
+\newcommand{\mdn}{ŋ}
+\newcommand{\mdD}{Ɗ}
+\newcommand{\mdd}{ɗ}
+\newcommand{\mdE}{Ə}
+\newcommand{\mde}{ə}
+\newcommand{\mdetilde}{\~{\mde}} % ə̃
+\newcommand{\mdatilde}{\~{a}}            % ã
+\newcommand{\mdeetilde}{\~{e}}            % ẽ
+
+% Style pour les mots moundang
+% utiliser les fonctions built-in pour faire aficher les textes en gras, italique, etc.
+% à personnaliser selon ta préférence
