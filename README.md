@@ -10,6 +10,3 @@ Package LaTeX pour écrire en langue moundang avec Unicode.
 
 ## Compilation
 Utiliser XeLaTeX ou LuaLaTeX avec la police Charis SIL.
-
-## Slogan
-Promouvoir les contenus scientifiques en moundang 🌍
